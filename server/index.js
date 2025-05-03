@@ -17,11 +17,17 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware (optional: to parse JSON)
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'build')));
 
 // API routes
 app.use('/api/employees', employeesRoutes);
 app.use('/api/projects', projectsRoutes);
 app.use('/api/project_assignments', projectAssignmentRoutes);
+
+// Serve the React app for any other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // Database connection
 mongoose.connect(process.env.CONNECTION_URL)

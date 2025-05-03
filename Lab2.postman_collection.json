@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "a856bb1f-cf70-44b5-9ba7-19156e5a51aa",
+		"name": "Lab2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44005996",
+		"_collection_link": "https://tibor-4574622.postman.co/workspace/Tibor's-Workspace~c42a61b4-082a-4aa6-8298-63d3680daee0/collection/44005996-a856bb1f-cf70-44b5-9ba7-19156e5a51aa?action=share&source=collection_link&creator=44005996"
+	},
+	"item": [
+		{
+			"name": "Post new employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"employee_id\": \"E06\",\r\n  \"full_name\": \"Thomas Test\",\r\n  \"email\": \"thomas@example.com\",\r\n  \"hashed_password\": \"hashed5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post new project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"project_code\": \"P600\",\r\n  \"project_name\": \"Test\",\r\n  \"project_description\": \"Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get project assignments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/project_assignments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"project_assignments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post new project assignment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"employee_id\": \"E01\",\r\n  \"project_code\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/project_assignments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"project_assignments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
