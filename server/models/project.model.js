@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Define the schema for the Project model
 const projectSchema = new mongoose.Schema({
     project_code: {
         type: String,

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Define the schema for the ProjectAssignment model
 const assignmentSchema = new mongoose.Schema({
     employee: { 
         type: String,

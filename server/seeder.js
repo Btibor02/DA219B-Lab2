@@ -11,10 +11,12 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: __dirname + '/.env' });
 
-
+// Connect to MongoDB and seed the database with initial data
 async function seedData() {
+  // Connect to MongoDB
   await mongoose.connect(process.env.CONNECTION_URL);
 
+  // Create new employee, project, and project assignment models
   const employees = await Employee.insertMany([
     { employee_id: 'E01', full_name: 'Alice Johnson', email: 'alice@example.com', hashed_password: 'hashed1' },
     { employee_id: 'E02', full_name: 'Bob Smith', email: 'bob@example.com', hashed_password: 'hashed2' },

@@ -15,7 +15,7 @@ dotenv.config({ path: __dirname + '/.env' });
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware (optional: to parse JSON)
+// Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -38,10 +38,3 @@ mongoose.connect(process.env.CONNECTION_URL)
     });
 }).catch((e) => console.log('Connection failed to database!' + e.message));
 
-app.get('/', (req, res) => {
-  res.send('Hello from Express!');
-});
-
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
