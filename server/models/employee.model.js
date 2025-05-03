@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const employeeSchema = new mongoose.Schema({
-    employee_id: String,
+    employee_id: {
+        type: String,
+        unique: true,
+        required: true
+    },
     full_name: String,
     email: String,
     hashed_password: String

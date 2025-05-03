@@ -1,9 +1,20 @@
 import mongoose from "mongoose";
 
 const assignmentSchema = new mongoose.Schema({
-    employee_id: { type: String, ref: 'Employee' },
-    project_code: { type: String, ref: 'Project' },
-    start_date: Date
+    employee_id: { 
+        type: String,
+        ref: 'Employee',
+        required: true
+    },
+    project_code: { 
+        type: String,
+        ref: 'Project',
+        required: true
+    },
+    start_date: {
+        type: Date,
+        default: Date.now,
+    }
 });
 
 const ProjectAssignment = mongoose.model("ProjectAssignment", assignmentSchema);

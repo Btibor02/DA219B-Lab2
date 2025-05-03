@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema({
-    project_code: String,
+    project_code: {
+        type: String,
+        unique: true,
+        required: true
+    },
     project_name: String,
     project_description: String
 });
