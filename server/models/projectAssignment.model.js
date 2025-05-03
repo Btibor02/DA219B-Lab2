@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const assignmentSchema = new mongoose.Schema({
-    employee_id: { 
+    employee: { 
         type: String,
         ref: 'Employee',
         required: true
     },
-    project_code: { 
+    project: { 
         type: String,
         ref: 'Project',
         required: true

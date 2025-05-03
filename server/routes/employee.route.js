@@ -1,10 +1,10 @@
 import express from 'express';
-import employeeController from '../controllers/employee.controller';
+import employeeController from '../controllers/employee.controller.js';
 
 const router = express.Router();
 
 // Route to create a new employee
 // POST /employee
-router.post('/employee', employeeController.postNewEmployee);
+router.post('/', employeeController.postNewEmployee);
 
 export default router;

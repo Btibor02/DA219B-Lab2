@@ -1,6 +1,6 @@
-import ProjectAssignment from "../models/projectAssignment.model";
-import Employee from "../models/employee.model";
-import Project from "../models/project.model";
+import ProjectAssignment from "../models/projectAssignment.model.js";
+import Employee from "../models/employee.model.js";
+import Project from "../models/project.model.js";
 
 const postAssignProject = async (req, res) => {
     try {
@@ -10,7 +10,7 @@ const postAssignProject = async (req, res) => {
             return res.status(400).json({ message: "Employee ID and Project Code are required" });
         }
 
-        const existingEmployee = await Employee.findOne(employee_id);
+        const existingEmployee = await Employee.findOne({employee_id});
         if (!existingEmployee) {
             return res.status(404).json({ message: "Employee not found" });
         }
@@ -21,8 +21,9 @@ const postAssignProject = async (req, res) => {
         }
 
         const newAssignment = new ProjectAssignment({
-            employee_id,
-            project_code
+            employee: employee_id,
+            project: project_code,
+            start_date: req.body.start_date || new Date()
         });
 
         await newAssignment.save();
@@ -35,7 +36,7 @@ const postAssignProject = async (req, res) => {
 
 const getAllAssignments = async (req, res) => {
     try {
-        const assignments = await ProjectAssignment.find().populate('employee_id').populate('project_code');
+        const assignments = await ProjectAssignment.find();
         res.status(200).json(assignments);
     } catch (error) {
         res.status(500).json({ message: "Error fetching assignments", error });
