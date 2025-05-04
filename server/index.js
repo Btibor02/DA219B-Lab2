@@ -27,8 +27,6 @@ app.use('/api/employees', employeesRoutes);
 app.use('/api/projects', projectsRoutes);
 app.use('/api/project_assignments', projectAssignmentRoutes);
 
-
-
 // Database connection
 mongoose.connect(process.env.CONNECTION_URL)
   .then(() => {
