@@ -45,7 +45,21 @@ const getAllAssignments = async (req, res) => {
     try {
         // Fetch all project assignments
         const assignments = await ProjectAssignment.find();
-        res.status(200).json(assignments);
+
+        const assignmentDetails = await Promise.all(assignments.map(async (assignment) => {
+            const employee = await Employee.findOne({employee_id: assignment.employee});
+            const project = await Project.findOne({ project_code: assignment.project });
+
+            return {
+                _id: assignment._id,
+                employee_id: assignment.employee,
+                full_name: employee ? employee.full_name : "Unknown",
+                project_code: assignment.project,
+                project_name: project ? project.project_name : "Unknown",
+                startDate: assignment.start_date
+            };
+        }));
+        res.status(200).json(assignmentDetails);
     } catch (error) {
         res.status(500).json({ message: "Error fetching assignments", error });
     }
